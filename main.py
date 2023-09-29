@@ -17,8 +17,8 @@ st.title("QueryBot-Related to Financial Statements And reports.")
 st.sidebar.header("OpenAI Configuration")
 
 # Input field for the OpenAI API key
-openai.api_key = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
-
+key = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
+openai.api_key=key
 
 if st.sidebar.button("Done"):
     st.success("API Key saved successfully. You can now proceed.")
@@ -30,7 +30,7 @@ if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
 # Pass the API key to ChatOpenAI
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai.api_key)
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=key)
 if 'buffer_memory' not in st.session_state:
             st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 system_msg_template = SystemMessagePromptTemplate.from_template(template=f"""
