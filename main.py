@@ -14,12 +14,15 @@ from utils import *
 
 st.title("QueryBot-Related to Financial Statements And reports.")
 st.sidebar.header("OpenAI Configuration")
-OPENAI_API_KEY = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
-os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
-open=OPENAI_API_KEY
-if st.button("Done"):
+
+# Input field for the OpenAI API key
+openai_api_key = st.sidebar.text_input("Enter your OpenAI API Key:", type="password")
+
+# Set the OpenAI API key in the environment variable
+os.environ["OPENAI_API_KEY"] = openai_api_key
+
+if st.sidebar.button("Done"):
     st.success("API Key saved successfully. You can now proceed.")
-    
 
 if 'responses' not in st.session_state:
     st.session_state['responses'] = ["How can I assist you?"]
@@ -27,7 +30,8 @@ if 'responses' not in st.session_state:
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=open)
+# Pass the API key to ChatOpenAI
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key)
 if 'buffer_memory' not in st.session_state:
             st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 system_msg_template = SystemMessagePromptTemplate.from_template(template=f"""
@@ -121,7 +125,7 @@ with textcontainer:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
             #st.code(conversation_string)
-            refined_query = query_refiner(conversation_string, query,open)
+            refined_query = query_refiner(conversation_string, query,openai_api_key)
             st.subheader("Refined Query:")
             st.write(refined_query)
             context = find_match(refined_query)
