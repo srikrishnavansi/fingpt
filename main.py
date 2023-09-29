@@ -13,7 +13,8 @@ from utils import *
 
 st.title("QueryBot-Related to Financial Statements And reports.")
 st.sidebar.header("OpenAI Configuration")
-open= st.sidebar.text_input("Enter your OpenAI API Key", type="password")
+OPENAI_API_KEY = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 st.success("API Key saved successfully. You can now proceed.")
 
 if 'responses' not in st.session_state:
@@ -116,7 +117,7 @@ with textcontainer:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
             #st.code(conversation_string)
-            refined_query = query_refiner(conversation_string, query,open)
+            refined_query = query_refiner(conversation_string, query)
             st.subheader("Refined Query:")
             st.write(refined_query)
             context = find_match(refined_query)
