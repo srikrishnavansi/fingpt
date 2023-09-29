@@ -11,7 +11,7 @@ def find_match(input):
     result = index.query(input_em, top_k=2, includeMetadata=True)   
     return result['matches'][0]['metadata']['text']+"\n"+result['matches'][1]['metadata']['text']
 
-def query_refiner(conversation, query,OPENAI_API_KEY):
+def query_refiner(conversation, query,api):
 
     response = openai.Completion.create(
     model="text-davinci-003",
