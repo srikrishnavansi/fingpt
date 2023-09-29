@@ -16,7 +16,7 @@ st.title("QueryBot-Related to Financial Statements And reports.")
 st.sidebar.header("OpenAI Configuration")
 
 # Input field for the OpenAI API key
-OPENAI_API_KEY = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")= st.sidebar.text_input("Enter your OpenAI API Key:", type="password")
+OPENAI_API_KEY = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
 
 # Set the OpenAI API key in the environment variable
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
