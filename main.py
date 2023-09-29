@@ -31,7 +31,7 @@ if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
 # Pass the API key to ChatOpenAI
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key)
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", OPENAI_API_KEY=OPENAI_API_KEY)
 if 'buffer_memory' not in st.session_state:
             st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 system_msg_template = SystemMessagePromptTemplate.from_template(template=f"""
