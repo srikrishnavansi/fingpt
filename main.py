@@ -13,7 +13,7 @@ import os
 from streamlit_chat import message
 from utils import *
 
-st.title("QueryBot-Related to Financial Statements And reports.")
+st.title("FinGPT")
 
 # Input field for the OpenAI API key
 key = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
