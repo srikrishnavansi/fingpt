@@ -16,10 +16,10 @@ st.title("QueryBot-Related to Financial Statements And reports.")
 st.sidebar.header("OpenAI Configuration")
 
 # Input field for the OpenAI API key
-openai_api_key = st.sidebar.text_input("Enter your OpenAI API Key:", type="password")
+OPENAI_API_KEY = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")= st.sidebar.text_input("Enter your OpenAI API Key:", type="password")
 
 # Set the OpenAI API key in the environment variable
-os.environ["OPENAI_API_KEY"] = openai_api_key
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 if st.sidebar.button("Done"):
     st.success("API Key saved successfully. You can now proceed.")
@@ -125,7 +125,7 @@ with textcontainer:
         with st.spinner("typing..."):
             conversation_string = get_conversation_string()
             #st.code(conversation_string)
-            refined_query = query_refiner(conversation_string, query,openai_api_key)
+            refined_query = query_refiner(conversation_string, query,OPENAI_API_KEY)
             st.subheader("Refined Query:")
             st.write(refined_query)
             context = find_match(refined_query)
