@@ -14,8 +14,9 @@ from utils import *
 st.title("QueryBot-Related to Financial Statements And reports.")
 st.sidebar.header("OpenAI Configuration")
 OPENAI_API_KEY = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
-if os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY:
-    open=OPENAI_API_KEY
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+open=OPENAI_API_KEY
+if st.button("Done"):
     st.success("API Key saved successfully. You can now proceed.")
     
 
