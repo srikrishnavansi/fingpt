@@ -19,9 +19,6 @@ st.title("QueryBot-Related to Financial Statements And reports.")
 key = st.text_input("Enter your OPENAI GPT4 API KEY:", type="password")
 openai.api_key=key
 
-if st.sidebar.button("Done"):
-    st.success("API Key saved successfully. You can now proceed.")
-
 if 'responses' not in st.session_state:
     st.session_state['responses'] = ["How can I assist you?"]
 
