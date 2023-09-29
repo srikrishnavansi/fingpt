@@ -12,7 +12,7 @@ def find_match(input):
     return result['matches'][0]['metadata']['text']+"\n"+result['matches'][1]['metadata']['text']
 
 def query_refiner(conversation, query,api):
-    openapi.api_key=api
+    openai.api_key=api
     response = openai.Completion.create(
     model="text-davinci-003",
     prompt=f"Given the following user query and conversation log, formulate a question that would be the most relevant to provide the user with an answer from a knowledge base.\n\nCONVERSATION LOG: \n{conversation}\n\nQuery: {query}\n\nRefined Query:",
