@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer
 import pinecone
 import openai
-import streamlit as st
+import streamlit as st 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 pinecone.init(api_key='915610aa-7cd4-44e6-9f2d-90d796ed9ca5', environment='gcp-starter')
 index = pinecone.Index('task')
