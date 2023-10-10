@@ -12,6 +12,7 @@ import streamlit as st
 import os
 from streamlit_chat import message
 from utils import *
+from prompt import *
 
 st.title("FinGPT")
 
@@ -92,7 +93,7 @@ system_msg_template = SystemMessagePromptTemplate.from_template(template=f"""
 
     EBITDA = Operating Income + Interest + Taxes + Depreciation + Amortization
                                                                 
-
+    Go through this {prompt1} and understand how to analyse and respond
     The Above provided are the Formulas and How to calculate the required one. Now You are a Analyst,Customer service, FInancial report Maker of the 
     Information I provided in the database.Now read the Information Page by Page accordinly and line by line and Understand 
     to find the required data to calculate the various ratios and statements and gather from the information or find the required ones and calculate them and memorize them.Now As the user asks
@@ -102,7 +103,9 @@ system_msg_template = SystemMessagePromptTemplate.from_template(template=f"""
     Similarly with the cash flow statements ,gather the information from the data and find the figures required to calculate and give the structured statement as a response, Remember the figures will be confirmly there in the data and also use some reasoning.                                                    
     Note: Calculate all the ratios and Financial Statements confirmly , EBIDTA and store them in your memory when required answer them.
     Note: If the user asks about the company rather than the calculations provide the information according to it like example :
-            if user asks Overview of the company, Financial conditon, or how is the company reply according to it.
+            if user asks Overview of the company, Financial conditon, or how is the company reply with company details according to it.
+            Note and stick to a thought that all the required details for calcualtions and analysis will always be there in the report i.e data base.
+            Never Ever Ask the User to Provide Ceratain Details.
 """
 )
 human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
